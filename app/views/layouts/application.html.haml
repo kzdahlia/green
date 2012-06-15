@@ -6,4 +6,15 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body{ :class => 'index' }
-    = yield
+    .head
+      = render :partial => "topbar"
+    .container.row-fluid
+      .top_fix.visible-desktop
+      .content
+        .main.span10
+          = yield
+        .sidebar.span2.visible-desktop
+          = render :partial => "sidebar"
+        .clearfix
+    %foot
+      = render :partial => "foot"

@@ -34,3 +34,7 @@ group :test do
   # Pretty printed test output
   gem 'turn', '0.8.2', :require => false
 end
+
+gem 'haml'
+gem 'bootstrap-sass', '~> 2.0.2'
+gem 'compass', '0.12.alpha.4'

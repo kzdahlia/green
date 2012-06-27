@@ -1,3 +1,9 @@
 @import "bootstrap";
 @import "bootstrap-responsive";
 @import "compass";
+
+@import "topbar";
+
+.top_fix {
+  padding-top: 60px;
+}

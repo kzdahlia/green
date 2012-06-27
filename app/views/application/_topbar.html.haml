@@ -1,0 +1,18 @@
+.topbar.navbar.navbar-fixed-top
+  .navbar-inner
+    .container
+      %a.btn.btn-navbar{ :data => { :target => ".nav-collapse", :toggle => :collapse } }
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      .brand
+        = link_to 'green foto', '#', :title => "green foto"
+      .nav-collapse.collapse
+        %ul.nav
+          %li.active
+            = link_to '首頁', '#', :title => "首頁"
+          %li
+            = link_to 'mypage', '#', :title => "mypage"
+        %ul.pull-right
+          %button.btn.btn-primary{:type => :submit }
+            ="dropbox 登入"

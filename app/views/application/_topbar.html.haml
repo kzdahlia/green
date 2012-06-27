@@ -1,7 +1,7 @@
 .topbar.navbar.navbar-fixed-top
   .navbar-inner
     .container
-      %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+      %a.btn.btn-navbar{ :data => { :target => ".nav-collapse", :toggle => :collapse } }
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
@@ -14,5 +14,5 @@
           %li
             = link_to 'mypage', '#', :title => "mypage"
         %ul.pull-right
-          %bottum.btn.btn-primary{:type => "submit"}
-            ="facebook 登入"
+          %botton.btn.btn-primary{:type => :submit }
+            ="dropbox 登入"

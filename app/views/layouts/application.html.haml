@@ -11,10 +11,7 @@
     .container.row-fluid
       .top_fix.visible-desktop
       .content
-        .main.span10
+        .main
           = yield
-        .sidebar.span2.visible-desktop
-          = render :partial => "sidebar"
-        .clearfix
     %foot
       = render :partial => "foot"

@@ -50,6 +50,7 @@ Green::Application.routes.draw do
   # just remember to delete public/index.html.
   # root :to => 'welcome#index'
 root :to => 'green#show'
+match 'foto_list' => 'foto_list#show', :as => :foto_list
 
   # See how all your routes lay out with "rake routes"
 

@@ -1,0 +1,21 @@
+%ul.nav.nav-pills.nav-stacked
+  %li.active
+    = link_to "全部相片" , "#"
+  %li
+    = link_to "尚未分類 (34)" , "#"
+  %li
+    = link_to "美食 (70)" , "#"
+  %li
+    = link_to "出遊 (152)" , "#"
+  %li
+    = link_to "毛小孩 (579)" , "#"
+  %li
+    .input-append
+      %input#appendedInputButton{:placeholder => "輸入新分類名稱",:size => "16", :type => "text"}
+        %button.btn{:type => "button"} 新增
+.list
+  - 6.times do |i|
+    .foto
+      = image_tag "http://placehold.it/105x105"
+  .clearfix
+ß

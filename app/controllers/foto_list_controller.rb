@@ -1,5 +1,5 @@
 class FotoListController < ApplicationController
   def show
-    render :layout => "application"
+    render :layout => "foto_list"
   end
 end

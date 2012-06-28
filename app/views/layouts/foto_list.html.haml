@@ -1,0 +1,20 @@
+!!!
+%html
+  %head
+    %title green
+    = stylesheet_link_tag    "application"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body{ :class => 'index' }
+    .head
+      = render :partial => "topbar"
+    .container.row-fluid
+      .top_fix.visible-desktop
+      .content
+        .main
+          = yield
+      .bottom_fix.visible-desktop
+    .sub_bar
+      = render :partial => "sub_bar"
+    %foot
+      = render :partial => "foot"

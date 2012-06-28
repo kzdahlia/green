@@ -1,0 +1,45 @@
+.navbar.navbar-fixed-bottom
+  .navbar-inner
+    %button.remove.btn.btn-inverse{:type => :button, "data-toggle" => :modal, :href => "#removeModal"}
+      ="移除"
+    %button.add.btn.btn-inverse{:type => :button, "data-toggle" => :modal, :href => "#addModal"}
+      ="加入"
+    .pick
+      已選取 3 張照片
+    .clearfix
+            
+            
+#removeModal.modal.hide
+  .modal-header
+    %button.close{"data-dismiss" => :modal, :type => :button} ×
+  %h3.modal-body
+    %p
+      確定要從服務內移除
+      %br
+      已選取的 3 張照片嗎？
+  .modal-footer
+    %a.btn{"data-dismiss" => "modal", :href => "#"}
+      取消
+    %a.btn.btn-danger{:href => "#"}
+      移除照片
+#addModal.modal.hide
+  .modal-header
+    %button.close{"data-dismiss" => :modal, :type => :button} ×
+    %h3
+      加入分類
+  .modal-body
+    %p
+      .tags
+        - 10.times do |i|
+          .tag
+            .label
+              美食
+        .clearfix
+      .input-append
+        %input#appendedInputButton{:placeholder => "輸入新分類名稱",:size => "16", :type => "text"}
+          %button.btn{:type => "button"} 新增
+  .modal-footer
+    %a.btn{"data-dismiss" => "modal", :href => "#"}
+      取消
+    %a.btn.btn-primary{:href => "#"}
+      儲存

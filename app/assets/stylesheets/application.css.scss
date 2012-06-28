@@ -3,8 +3,13 @@
 @import "compass";
 
 @import "topbar";
+@import "sub_bar";
 @import "foto_list";
 
 .top_fix {
   padding-top: 60px;
+}
+
+.bottom_fix {
+  padding-bottom: 60px;
 }

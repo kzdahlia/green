@@ -38,3 +38,4 @@ end
 gem 'haml'
 gem 'bootstrap-sass', '~> 2.0.2'
 gem 'compass', '0.12.alpha.4'
+gem 'devise', '1.4.9'

@@ -30,9 +30,14 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
-group :test do
-  # Pretty printed test output
+group :test, :development do
+  # gem 'turn', :require => false
   gem 'turn', '0.8.2', :require => false
+  gem "rspec"
+  gem "rspec-rails"
+  gem "factory_girl_rails", :require => false # Force spork reload it every time 
+  gem "shoulda-matchers"
+  gem "watchr"
 end
 
 gem 'haml'

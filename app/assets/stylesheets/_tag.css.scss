@@ -1,0 +1,16 @@
+.tag {
+  float: left;
+  .label {
+    background-color: white;
+    border-color: #81A18B;
+    border-radius: 6px 6px 6px 6px;
+    box-shadow: 0 1px 4px rgba(51, 51, 102, 0.5) inset;
+    color: #81A18B;
+    font-weight: normal;
+    padding: 6px;
+    vertical-align: middle;
+    white-space: nowrap;
+    margin: 5px;
+    text-align: center;
+  }
+}

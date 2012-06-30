@@ -49,3 +49,4 @@ gem 'omniauth-dropbox'
 gem 'dropbox-sdk', :require => 'dropbox_sdk'
 gem "redis", "~> 2.2.0"
 gem 'redis-objects', '~> 0.5.2'
+gem 'rest-client'

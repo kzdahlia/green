@@ -44,3 +44,8 @@ gem 'haml'
 gem 'bootstrap-sass', '~> 2.0.2'
 gem 'compass', '0.12.alpha.4'
 gem 'devise', '1.4.9'
+gem 'omniauth'
+gem 'omniauth-dropbox'
+gem 'dropbox-sdk', :require => 'dropbox_sdk'
+gem "redis", "~> 2.2.0"
+gem 'redis-objects', '~> 0.5.2'

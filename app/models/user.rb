@@ -6,14 +6,12 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates_uniqueness_of :dropbox_id, :allow_nil => true
   # Setup accessible (or protected) attributes for your model
   # attr_accessible :email, :password, :password_confirmation, :remember_me
 
-  has_many :fotos
+  has_many :fotos, :order => "datetime DESC"
   
   hash_key :credentials
-  value :dropbox_url
   
   def self.create_by_omniauth(hash, current_user)
     hash = ActiveSupport::HashWithIndifferentAccess.new hash
@@ -34,18 +32,6 @@ class User < ActiveRecord::Base
   def password_required?
     return false if dropbox_id
     true
-  end
-  
-  def dropbox_client
-    session = DropboxSession.new $Omniauth_Config[:dropbox][:api_key], $Omniauth_Config[:dropbox][:api_secret]
-    session.set_access_token credentials["dropbox-token"], credentials["dropbox-secret"]
-    DropboxClient.new session, :dropbox
-  end
-
-  def init_dropbox_url
-    return true if dropbox_url.value
-    res = dropbox_client.shares "/Camera Uploads"
-    dropbox_url.value = res["url"]
   end
   
 end

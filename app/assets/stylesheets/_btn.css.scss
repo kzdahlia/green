@@ -1,0 +1,24 @@
+.btn-remove {
+  @extend .btn;
+  @extend .btn-inverse;
+}
+
+.btn-add {
+  @extend .btn;
+  @extend .btn-inverse;
+}
+
+.btn-back {
+  @extend .btn;
+  @extend .btn-inverse;
+}
+
+.btn-left {
+  @extend .btn;
+  @extend .btn-inverse;
+}
+
+.btn-right {
+  @extend .btn;
+  @extend .btn-inverse;
+}

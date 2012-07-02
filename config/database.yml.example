@@ -5,27 +5,27 @@
 #   gem 'sqlite3'
 development:
   adapter: mysql2
-  database: "green_development"
+  database: "titto_development"
   host: "127.0.0.1"
   encoding: "utf8"
-  username: "root"
-  password: "voil1674"
+  username: ""
+  password: ""
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   adapter: mysql2
-  database: "green_test"
+  database: "titt_test"
   host: "127.0.0.1"
   encoding: "utf8"
-  username: "root"
-  password: "voil1674"
+  username: ""
+  password: ""
 
 production:
   adapter: mysql2
-  database: "green_production"
+  database: "titto_development"
   host: "127.0.0.1"
   encoding: "utf8"
-  username: "root"
-  password: "voil1674"
+  username: ""
+  password: ""

@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   include Redis::Objects
-  
+  include Parser::Dropbox
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :dropbox_id, :allow_nil => true
   # Setup accessible (or protected) attributes for your model
   # attr_accessible :email, :password, :password_confirmation, :remember_me
+
+  has_many :fotos
   
   hash_key :credentials
   value :dropbox_url

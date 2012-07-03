@@ -19,10 +19,8 @@
       %br
       已選取的 3 張照片嗎？
   .modal-footer
-    %a.btn{:data => {:dismiss => :modal}, :href => "#"}
-      取消
-    %a.btn.btn-danger{:href => "#"}
-      移除照片
+    = link_to "取消", "#", :class => :btn, :data => { :dismiss => :modal }
+    = link_to "移除照片", "#", :class => 'btn btn-danger'
 #addModal.modal.hide
   .modal-header
     %button.close{:data => {:dismiss => :modal} } ×
@@ -40,7 +38,5 @@
         %input#appendedInputButton{:placeholder => "輸入新分類名稱",:size => "16", :type => "text"}
           %button.btn{:type => "button"} 新增
   .modal-footer
-    %a.btn{:data => {:dismiss => :modal}, :href => "#"}
-      取消
-    %a.btn.btn-primary{:href => "#"}
-      儲存
+    = link_to "取消", "#", :class => :btn, :data => { :dismiss => :modal }
+    = link_to "儲存", "#", :class => 'btn btn-primary'

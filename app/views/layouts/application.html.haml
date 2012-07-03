@@ -8,14 +8,11 @@
   %body{ :class => 'index' }
     .head
       = yield :topbar
-      = yield :foto_top
     .container.row-fluid
       .top_fix.visible-desktop
       .content
         = yield
     .subbar
       = yield :subbar
-      = yield :foto_sub
     %foot
       = render :partial => "foot"
-      = yield :foto_top

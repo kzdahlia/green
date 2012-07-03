@@ -3,9 +3,9 @@
     %button.btn-back.pull-left
       %i.icon-chevron-left.icon-white
       ="回列表"
-    %button.btn-left.pull-center
+    %button.btn-prev.pull-center
       %i.icon-arrow-left.icon-white
-    %button.btn-right.pull-right
+    %button.btn-next.pull-right
       %i.icon-arrow-right.icon-white
     .clearfix
             
@@ -37,7 +37,7 @@
             .label
               美食
         .clearfix
-      .form-inline.input-append
+      %form.form-inline.input-append
         %input#appendedInputButton{:placeholder => "輸入新分類名稱",:size => "16", :type => "text"}
           %button.btn{:type => "button"} 新增
   .modal-footer

@@ -1,7 +1,13 @@
 .subbar {
+  .pull-left {
+    margin-left: 5px;
+  }
   .pull-center {
     width: 300px;
     line-height: 36px;
+  }
+  .pull-right {
+    margin-right: 5px;
   }
 }
 

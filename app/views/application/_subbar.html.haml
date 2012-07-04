@@ -1,15 +1,17 @@
 .navbar.navbar-fixed-bottom
   .navbar-inner
-    %button.btn-remove.pull-left{:data => {:toggle => :modal}, :href => "#removeModal"}
-      ="移除"
-    %button.btn-add.pull-right{:data => {:toggle => :modal}, :href => "#addModal"}
-      ="加入"
+    .pull-left
+      %button.btn-remove{:data => {:toggle => :modal}, :href => "#remove_modal"}
+        ="移除"
+    .pull-right
+      %button.btn-add{:data => {:toggle => :modal}, :href => "#add_modal"}
+        ="加入"
     .pull-center
       已選取 3 張照片
     .clearfix
             
             
-#removeModal.modal.hide
+#remove_modal.modal.hide
   .modal-header
     %button.close{:data => {:dismiss => :modal} } ×
     .clearfix
@@ -21,7 +23,7 @@
   .modal-footer
     = link_to "取消", "#", :class => :btn, :data => { :dismiss => :modal }
     = link_to "移除照片", "#", :class => 'btn btn-danger'
-#addModal.modal.hide
+#add_modal.modal.hide
   .modal-header
     %button.close{:data => {:dismiss => :modal} } ×
     %h3

@@ -1,0 +1,19 @@
+- content_for :topbar do
+  = render :partial => "topbar"
+- content_for :subbar do
+  = render :partial => "subbar"
+  
+%ul.nav.nav-pills.nav-stacked
+  %li.active
+    = link_to "全部相片" , "#"
+  - ["尚未分類 (34)", "美食 (70)", "出遊 (152)", "毛小孩 (579)"].each do |tag|
+    %li
+      = link_to tag, "#"
+  %li
+    %form.form-inline.input-append
+      %input#appendedInputButton{:placeholder => "輸入新分類名稱",:size => "16", :type => "text"}
+        %button.btn{:type => "button"} 新增
+.list
+  - 6.times do |i|
+    = render :partial => "foto_cell"
+  .clearfix

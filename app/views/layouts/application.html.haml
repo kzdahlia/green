@@ -7,11 +7,12 @@
     = csrf_meta_tags
   %body{ :class => 'index' }
     .head
-      = render :partial => "topbar"
+      = yield :topbar
     .container.row-fluid
       .top_fix.visible-desktop
       .content
-        .main
-          = yield
+        = yield
+    .subbar
+      = yield :subbar
     %foot
       = render :partial => "foot"

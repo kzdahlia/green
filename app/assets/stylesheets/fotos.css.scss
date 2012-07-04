@@ -1,0 +1,34 @@
+.input-append {
+  margin: 0 12px;
+  .btn {
+    margin-left: -5px;
+  }
+}
+
+.list {
+  .foto_cell {
+    z-index: -10;
+    float: left;
+    margin: 0 4px 4px 0;
+    .icons {
+      .tagged {
+        position: relative;
+        z-index: 1;
+        left: 90px;
+        top: -109px;
+      }
+      .zoomin {
+        position: relative;
+        z-index: 1;
+        left: -13px;
+        top: -101px;
+      }
+      .add {
+        position: relative;
+        z-index: 1;
+        left: 52px;
+        top: -20px;
+      }
+    }
+  }
+}

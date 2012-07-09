@@ -1,4 +1,6 @@
 class Foto < ActiveRecord::Base
+  include ActsAsEnabled
+  
   validates_uniqueness_of :url
   validates_presence_of :url
   validates_presence_of :user_id
@@ -8,5 +10,8 @@ class Foto < ActiveRecord::Base
   def data
     ActiveSupport::HashWithIndifferentAccess.new super
   end
-  
+
+  def filename
+    url.split("/").last
+  end
 end

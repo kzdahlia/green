@@ -9,6 +9,7 @@ class CreateFotos < ActiveRecord::Migration
       t.string :file
       t.string :fetch_state
       t.string :url_thumb
+      t.boolean :is_enabled
       t.text :data
       t.timestamps
     end

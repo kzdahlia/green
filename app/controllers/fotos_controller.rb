@@ -32,6 +32,4 @@ class FotosController < ApplicationController
     @foto_ids << 0
   end
   
-  
->>>>>>> foto model and collection update
 end

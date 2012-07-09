@@ -17,3 +17,14 @@
   - 6.times do |i|
     = render :partial => "foto_cell"
   .clearfix
+  
+= simple_form_for current_user, :url => collection_user_fotos_path(current_user) do |f|
+  = f.simple_fields_for :fotos, @fotos do |foto_form|
+    = foto_form.input_field :width
+    .pic
+      %label
+        = image_tag foto_file_path(foto)
+        = foto_form.input_field :_id, :as => :boolean, :checked => false
+        = "選取"
+  = f.submit "刪除", :data => { :type => :form_request, :method => :delete }
+  = f.submit "更新", :data => { :type => :form_request, :method => :put }

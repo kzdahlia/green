@@ -6,6 +6,15 @@ Green::Application.routes.draw do
     delete '/users/logout' => 'devise/sessions#destroy', :as => :user_logout
   end
 
+  resources :users, :only => [:show] do
+    resources :fotos do
+      collection do
+        put :collection, :action => 'update_collection'
+        delete :collection, :action => 'destroy_collection'
+      end
+    end
+  end
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

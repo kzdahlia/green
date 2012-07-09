@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   # attr_accessible :email, :password, :password_confirmation, :remember_me
 
   has_many :fotos, :order => "datetime DESC"
+  has_many :tags
   accepts_nested_attributes_for :fotos
   
   hash_key :credentials

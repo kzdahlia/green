@@ -16,4 +16,13 @@ $(document).ready(function(){
     });
   });
 
+  $('[data-type=foto]').each(function(){
+    init_pic_size(this);
+  });
 });
+
+
+function init_pic_size(dom) {
+  var img = $("img", dom)
+  img.width(105);
+}

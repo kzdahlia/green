@@ -7,5 +7,6 @@
   .icons
     = link_to "#", :class => 'tagged' do
       %i.icon-bookmark
-    .zoomin
-      %i.icon-zoom-in
+    = link_to user_foto_path(foto.user, foto) do
+      .zoomin
+        %i.icon-zoom-in

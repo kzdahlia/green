@@ -10,7 +10,7 @@
     %li
       = link_to tag.name, "#"
   %li
-    = simple_form_for Tag.new, :url => user_tags_path(current_user), :html => { :class => "form-inline input-append" }, :method => :post do |tag_form|
+    = simple_form_for Tag.new, :url => user_tags_path(current_user), :html => { :class => "form-inline input-append", :id => "fotos_form" }, :method => :post do |tag_form|
       = tag_form.input_field :name, :id => "appendedInputButton", :placeholder => "輸入新分類名稱", :size => 16
       = tag_form.submit " 新增", :class => :btn
 .list

@@ -7,7 +7,7 @@
       %button.btn-add{:data => {:toggle => :modal}, :href => "#add_modal"}
         ="加入"
     .pull-center
-      已選取 3 張照片
+      = raw "已選取 #{foto_checked_number} 張照片"
     .clearfix
             
 - content_for :fotos_remove_modal do
@@ -19,7 +19,7 @@
       %p
         確定要從服務內移除
         %br
-        已選取的 3 張照片嗎？
+        = raw "已選取的 #{foto_checked_number} 張照片嗎？"
     .modal-footer
       = link_to "取消", "#", :class => :btn, :data => { :dismiss => :modal }
       = link_to "移除照片", "#", :class => 'btn btn-danger', :data => { :type => :form_request, :method => :delete }

@@ -7,11 +7,14 @@ $(document).ready(function(){
     bt.on('click', function(){
       var form = bt.parents('form');
       $('input[name=_method]', form).attr('value', bt.attr('data-method'));
-      console.log(bt.attr('data-action'));
       if(bt.attr('data-action')) {
         form.attr('action', bt.attr('data-action'));
       }
-      form.submit();
+      if(check_checked_count()) {
+        form.submit();
+      } else {
+        alert("請選擇至少一張圖片");
+      }
       return false;
     });
   });
@@ -45,8 +48,36 @@ $(document).ready(function(){
     });
   });
   
+  $('input.foto_checked').each(function(){
+    var to = $('span#foto_checked');
+    if(this.checked) {
+      check_counter_append(to, 1);
+    }
+    $(this).on('change', function(){
+      if(this.checked) {
+        check_counter_append(to, 1);
+      } else {
+        check_counter_append(to, -1);
+      }
+    });
+  });
+  
 });
 
+function check_checked_count() {
+  if($('span#foto_checked').html() == "0") {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+
+function check_counter_append(to, num) {
+  var number = parseInt(to.html())
+  number = number + num
+  to.html(number);
+}
 
 function init_pic_size(dom) {
   var img = $("img", dom)

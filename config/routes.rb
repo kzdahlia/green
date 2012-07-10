@@ -1,12 +1,14 @@
 Green::Application.routes.draw do
   match '/auth/:provider/callback', :to => 'sessions#create'
   match '/auth/failure' => 'sessions#failure'
+  match '/auth/dropbox', :as => :dropbox_login
   devise_for :users do
     get '/users/sign_in', :to => 'devise/sessions#new', :as => :new_user_session # :new_user_session
     delete '/users/logout' => 'devise/sessions#destroy', :as => :user_logout
   end
 
   resources :users, :only => [:show] do
+    get :dropbox, :on => :member
     resources :tags
     resources :fotos do
       collection do

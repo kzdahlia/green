@@ -19,6 +19,18 @@ $(document).ready(function(){
   $('[data-type=foto]').each(function(){
     init_pic_size(this);
   });
+
+  $('input[data-type=fade]').each(function(){
+    var to = $('img', $(this).parents($(this).attr('data-to')));
+    $(this).on('change', function(){
+      if(this.checked) {
+        to.fadeTo(0, 0.5);
+      } else {
+        to.fadeTo(0, 1);
+      }
+    });
+  });
+  
 });
 
 
@@ -27,3 +39,5 @@ function init_pic_size(dom) {
   img.width(105);
   img.height(105);
 }
+
+

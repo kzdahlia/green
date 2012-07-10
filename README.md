@@ -4,7 +4,7 @@
 
 # setup project
 
-`cp config/redis.yml.exmaple config/redis.yml`
+`cp config/redis.yml.exmaple config/redis.yml`  
 `cp config/omniauth.yml.exmaple config/omniauth.yml`
 
 # start redis
@@ -14,3 +14,7 @@
 # start project
 
 `rails s`
+
+# rebuild
+
+`bundle exec rake dev:rebuild`

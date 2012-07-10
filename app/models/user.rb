@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   # attr_accessible :email, :password, :password_confirmation, :remember_me
 
-  has_many :fotos, :order => "datetime DESC"
+  has_many :fotos, :order => "datetime DESC, created_at DESC"
   has_many :tags
   accepts_nested_attributes_for :fotos
   

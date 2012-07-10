@@ -52,3 +52,8 @@ gem 'redis-objects', '~> 0.5.2'
 gem 'rest-client'
 gem 'simple_form', "~> 2.0.2"
 gem "kaminari"
+gem 'sidekiq'
+gem "carrierwave", "0.5.8"
+gem 'rmagick'
+gem 'sinatra'
+gem 'slim'

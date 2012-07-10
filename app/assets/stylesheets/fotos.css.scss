@@ -10,6 +10,11 @@
     z-index: -10;
     float: left;
     margin: 0 4px 4px 0;
+    .img {
+      width: 105px;
+      height: 105px;
+      overflow: hidden;
+    }
     .icons {
       .tagged {
         position: relative;

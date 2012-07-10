@@ -7,6 +7,7 @@ Green::Application.routes.draw do
   end
 
   resources :users, :only => [:show] do
+    resources :tags
     resources :fotos do
       collection do
         put :collection, :action => 'update_collection'

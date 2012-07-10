@@ -1,6 +1,9 @@
 .foto_cell
-  = image_tag "http://placehold.it/105x105"
-  .icons
-    %i.icon-bookmark.tagged
-    %i.icon-zoom-in.zoomin
-    %i.icon-ok-sign.add
+  %label
+    .img{:data => { :type => :foto }}
+      = image_tag foto_file_path(foto)
+    .icons
+      = link_to "#", :class => 'tagged' do
+        %i.icon-bookmark
+      %i.icon-zoom-in.zoomin
+      = form.input_field :_id, :as => :boolean, :checked => false, :class => 'icon-ok-sign add'

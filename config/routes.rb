@@ -72,9 +72,8 @@ Green::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # root :to => 'welcome#index'
-root :to => 'green#show'
-match 'list' => 'fotos#index', :as => :list
-match 'foto' => 'fotos#show', :as => :foto
+  
+  root :to => 'green#show'
 
   # See how all your routes lay out with "rake routes"
 

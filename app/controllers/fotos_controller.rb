@@ -7,8 +7,10 @@ class FotosController < ApplicationController
   
   def show
     @foto = current_user.fotos.find params[:id]
-    response.headers['Content-Type'] = 'image/jpeg'
-    render :text => current_user.dropbox_client.thumbnail("Camera%20Uploads/#{@foto.filename_origin}", 'large') if params[:format] == 'jpg'
+    if params[:format] == 'jpg'
+      response.headers['Content-Type'] = 'image/jpeg'
+      render :text => current_user.dropbox_client.thumbnail("Camera%20Uploads/#{@foto.filename_origin}", 'large')
+    end
   end
   
   def update

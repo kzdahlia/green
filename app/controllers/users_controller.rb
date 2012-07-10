@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   end
   
   def dropbox
+    current_user.init_dropbox_url
     current_user.parse_dropbox_photos
     redirect_to user_fotos_path(current_user)
   end

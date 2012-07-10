@@ -1,7 +1,7 @@
 .navbar.navbar-fixed-bottom
   .navbar-inner
     .pull-left
-      %button.btn-back
+      = link_to user_fotos_path(@foto.user), :class => "btn-back" do
         %i.icon-chevron-left.icon-white
         ="回列表"
     .pull-right

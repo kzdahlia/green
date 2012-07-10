@@ -33,14 +33,12 @@
     .modal-body
       %p
         .tags
-          - 10.times do |i|
-            .tag
-              %button.btn-add{:data => {:toggle => :button} }
-                ="美食"
+          - current_user.tags.each do |tag|
+            = render :partial => "tag", :object => tag
           .clearfix
         %form.form-inline.input-append
-          %input#appendedInputButton{:placeholder => "輸入新分類名稱",:size => "16", :type => "text"}
-            %button.btn{:type => "button"} 新增
+          %input#tag_add{ :placeholder => "輸入新分類名稱", :size => "16", :type => "text" }
+            %input.btn{ :type => "button", :value => "新增", :data => { :type => :append_tag, :user_id => current_user.id, :from => "#tag_add", :to => ".modal-body .tags" } }
     .modal-footer
       = link_to "取消", "#", :class => :btn, :data => { :dismiss => :modal }
       = link_to "儲存", "#", :class => 'btn btn-primary'

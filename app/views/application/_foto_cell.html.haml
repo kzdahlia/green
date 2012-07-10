@@ -3,7 +3,9 @@
     .img{ :data => foto.has_thumb? ? "" : { :type => :foto } }
       = image_tag foto_file_path(foto)
     .icons
-      = link_to "#", :class => 'tagged' do
-        %i.icon-bookmark
-      %i.icon-zoom-in.zoomin
       = form.input_field :_id, :as => :boolean, :checked => false, :class => 'icon-ok-sign add'
+  .icons
+    = link_to "#", :class => 'tagged' do
+      %i.icon-bookmark
+    .zoomin
+      %i.icon-zoom-in

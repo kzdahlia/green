@@ -35,8 +35,8 @@
         .tags
           - 10.times do |i|
             .tag
-              .label
-                美食
+              %button.btn-add{:data => {:toggle => :button} }
+                ="美食"
           .clearfix
         %form.form-inline.input-append
           %input#appendedInputButton{:placeholder => "輸入新分類名稱",:size => "16", :type => "text"}

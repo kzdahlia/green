@@ -1,4 +1,8 @@
 Green::Application.routes.draw do
+  
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
+    
   match '/auth/:provider/callback', :to => 'sessions#create'
   match '/auth/failure' => 'sessions#failure'
   match '/auth/dropbox', :as => :dropbox_login

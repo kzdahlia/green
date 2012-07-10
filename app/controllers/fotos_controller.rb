@@ -2,13 +2,13 @@ class FotosController < ApplicationController
   before_filter :load_foto_ids, :only => [ :destroy_collection ]
   
   def index
-    @fotos = current_user.fotos.enabled.page(params[:page]).per(10)
+    @fotos = current_user.fotos.enabled.page(params[:page]).per(30)
   end
   
   def show
     @foto = current_user.fotos.find params[:id]
     response.headers['Content-Type'] = 'image/jpeg'
-    render :text => current_user.dropbox_client.thumbnail("Camera%20Uploads/#{@foto.filename}", 'large') if params[:format] == 'jpg'
+    render :text => current_user.dropbox_client.thumbnail("Camera%20Uploads/#{@foto.filename_origin}", 'large') if params[:format] == 'jpg'
   end
   
   def update

@@ -11,10 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120709052735) do
+ActiveRecord::Schema.define(:version => 20120710083354) do
 
   create_table "fotos", :force => true do |t|
     t.integer  "user_id"
+    t.string   "token"
     t.string   "url"
     t.datetime "datetime"
     t.integer  "width"
@@ -27,6 +28,21 @@ ActiveRecord::Schema.define(:version => 20120709052735) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "fotos", ["token"], :name => "index_fotos_on_token"
+  add_index "fotos", ["user_id"], :name => "index_fotos_on_user_id"
+
+  create_table "taggings", :force => true do |t|
+    t.integer  "tag_id"
+    t.integer  "foto_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "taggings", ["tag_id", "foto_id"], :name => "index_taggings_on_tag_id_and_foto_id", :unique => true
+  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
+  add_index "taggings", ["user_id"], :name => "index_taggings_on_user_id"
 
   create_table "tags", :force => true do |t|
     t.string   "name"

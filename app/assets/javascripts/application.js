@@ -31,6 +31,20 @@ $(document).ready(function(){
     });
   });
   
+
+  $('input[data-type=append_tag]').each(function(){
+    var user_id = $(this).attr('data-user_id');
+    var to = $($(this).attr('data-to'))
+    $(this).on('click', function(){
+      var text_input = $($(this).attr('data-from'));
+      var tag_name = text_input.attr("value");
+      text_input.attr("value", "");
+      $.post("/users/"+user_id+"/tags.html", { "tag": { "name": tag_name } }, function(data){
+        to.append(data);
+      });
+    });
+  });
+  
 });
 
 

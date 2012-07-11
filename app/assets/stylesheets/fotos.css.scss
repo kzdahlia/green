@@ -3,24 +3,28 @@
     z-index: -10;
     float: left;
     margin: 0 4px 4px 0;
+    label {
+      margin-bottom: 0;
+    }
     .img {
       width: 105px;
       height: 105px;
       overflow: hidden;
     }
     .icons {
+        position: absolute;
       .tagged {
         position: relative;
         z-index: 1;
         left: 90px;
-        top: -134px;
+        top: -108px;
       }
       .zoomin {
         position: relative;
         z-index: 1;
         width: 17px;
         left: 4px;
-        top: -143px;
+        top: -118px;
         background: white;
         opacity: 0.8;
         @include border-radius(10px);

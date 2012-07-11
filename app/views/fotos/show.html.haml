@@ -1,6 +1,7 @@
 - content_for :topbar do
   = render :partial => "foto_top"
 - content_for :subbar do
-  = render :partial => "foto_sub"
+  = render :partial => "subbar"
 
-%img{ :src => @foto.url, :width => "100%" }/
+.pull-center
+  %img{ :src => @foto.url, :width => "100%" }/

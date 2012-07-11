@@ -61,7 +61,8 @@ $(document).ready(function(){
       }
     });
   });
-  
+
+  $('.tags').button();
 });
 
 function check_checked_count() {

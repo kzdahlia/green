@@ -24,7 +24,7 @@ $(document).ready(function(){
   });
 
   $('input[data-type=fade]').each(function(){
-    var to = $('img', $(this).parents($(this).attr('data-to')));
+    var to = $('.img img.foto', $(this).parents($(this).attr('data-to')));
     $(this).on('change', function(){
       if(this.checked) {
         to.fadeTo(0, 0.5);
@@ -55,8 +55,10 @@ $(document).ready(function(){
     }
     $(this).on('change', function(){
       if(this.checked) {
+        $(this).parents(".foto_cell").addClass("selected");
         check_counter_append(to, 1);
       } else {
+        $(this).parents(".foto_cell").removeClass("selected");
         check_counter_append(to, -1);
       }
     });

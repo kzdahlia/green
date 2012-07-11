@@ -11,6 +11,12 @@
       height: 105px;
       overflow: hidden;
     }
+//    input[type=checkbox] {
+//      visibility: hidden;
+//    }
+    .checked {
+      display: none;
+    }
     .icons {
         position: absolute;
       .tagged {
@@ -30,12 +36,21 @@
         @include border-radius(10px);
         box-shadow: 2px 4px 3px rgba(20%,20%,40%,0.5);
       }
-      .add {
+      .foto_checked {
+        visibility: hidden;
         position: relative;
-        z-index: 1;
-        left: 88px;
-        top: -22px;
+        left: 74px;
+        top: -30px;
       }
+    }
+  }
+  .foto_cell.selected {
+    .checked {
+      display: block;
+      position: relative;
+      z-index: 9999;
+      left: 74px;
+      top: -45px;
     }
   }
 }

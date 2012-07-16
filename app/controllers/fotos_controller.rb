@@ -1,5 +1,5 @@
 class FotosController < ApplicationController
-  before_filter :load_foto_ids, :only => [ :destroy_collection ]
+  before_filter :load_foto_ids, :only => [ :destroy_collection, :update_collection ]
   
   def index
     @fotos = current_user.fotos.enabled.page(params[:page]).per(30)
@@ -27,7 +27,18 @@ class FotosController < ApplicationController
     redirect_to user_fotos_path(current_user)
   end
   
+  def update_collection
+    append_tags(@foto_ids) if params[:tags] && (params[:tags][:tag_ids] || []).size > 0
+    redirect_to user_fotos_path(current_user)
+  end
+  
   private 
+  
+  def append_tags(foto_ids)
+    current_user.fotos.where(:id => @foto_ids).each do |foto|
+      params[:tags][:tag_ids].each{ |tag_id| foto.tag_ids << tag_id }
+    end
+  end
   
   def load_foto_ids
     @foto_ids = params[:user][:fotos_attributes].values.select{ |tmp| tmp[:_id] == "1" }.map{ |tmp| tmp[:id] }

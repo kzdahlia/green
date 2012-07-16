@@ -5,3 +5,6 @@
 
 .pull-center
   %img{ :src => @foto.url, :width => "100%" }/
+  
+= yield :fotos_remove_modal
+= yield :fotos_tagging_modal

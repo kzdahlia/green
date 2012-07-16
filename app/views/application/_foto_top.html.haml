@@ -1,8 +1,7 @@
 .topbar.navbar.navbar-fixed-top
   .navbar-inner
     .pull-left
-      %button.btn-back{:data => {:toggle => :modal}}
-        ="上一頁"
+      = link_to "上一頁", user_fotos_path(current_user), :class => "btn-back"
     .pull-center
       %span
         美食

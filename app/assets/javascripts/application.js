@@ -64,6 +64,18 @@ $(document).ready(function(){
     });
   });
 
+  $('button[data-type=tag_checkbox]').each(function(){
+    var checkbox = $("input[type=checkbox]", $(this).parents('.tag'));
+    checkbox.hide();
+    $(this).on("click", function(){
+      if(this.className.indexOf('active') >= 0) { // uncheck
+        checkbox.attr('checked', false);
+      } else { // check
+        checkbox.attr('checked', true);
+      }
+    });
+  });
+
   $('.tags').button();
 });
 

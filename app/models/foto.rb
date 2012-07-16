@@ -9,6 +9,8 @@ class Foto < ActiveRecord::Base
   validates_presence_of :user_id
   serialize :data, Hash
   belongs_to :user
+  has_many :taggings
+  has_many :tags, :through => :taggings
   
   def has_thumb?
     url_thumb.present?

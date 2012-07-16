@@ -1,4 +1,27 @@
 Green::Application.routes.draw do
+  
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
+    
+  match '/auth/:provider/callback', :to => 'sessions#create'
+  match '/auth/failure' => 'sessions#failure'
+  match '/auth/dropbox', :as => :dropbox_login
+  devise_for :users do
+    get '/users/sign_in', :to => 'devise/sessions#new', :as => :new_user_session # :new_user_session
+    delete '/users/logout' => 'devise/sessions#destroy', :as => :user_logout
+  end
+
+  resources :users, :only => [:show] do
+    get :dropbox, :on => :member
+    resources :tags
+    resources :fotos do
+      collection do
+        put :collection, :action => 'update_collection'
+        delete :collection, :action => 'destroy_collection'
+      end
+    end
+  end
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -49,9 +72,8 @@ Green::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # root :to => 'welcome#index'
-root :to => 'green#show'
-match 'list' => 'fotos#index', :as => :list
-match 'foto' => 'fotos#show', :as => :foto
+  
+  root :to => 'green#show'
 
   # See how all your routes lay out with "rake routes"
 

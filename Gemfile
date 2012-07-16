@@ -5,7 +5,7 @@ gem 'rails', '3.1.3'
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+gem 'mysql2'
 
 
 # Gems used only for assets and not required
@@ -30,11 +30,30 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
-group :test do
-  # Pretty printed test output
+group :test, :development do
+  # gem 'turn', :require => false
   gem 'turn', '0.8.2', :require => false
+  gem "rspec"
+  gem "rspec-rails"
+  gem "factory_girl_rails", :require => false # Force spork reload it every time 
+  gem "shoulda-matchers"
+  gem "watchr"
 end
 
 gem 'haml'
 gem 'bootstrap-sass', '~> 2.0.2'
 gem 'compass', '0.12.alpha.4'
+gem 'devise', '1.4.9'
+gem 'omniauth'
+gem 'omniauth-dropbox'
+gem 'dropbox-sdk', :require => 'dropbox_sdk'
+gem "redis", "~> 2.2.0"
+gem 'redis-objects', '~> 0.5.2'
+gem 'rest-client'
+gem 'simple_form', "~> 2.0.2"
+gem "kaminari"
+gem 'sidekiq'
+gem "carrierwave", "0.5.8"
+gem 'rmagick'
+gem 'sinatra'
+gem 'slim'

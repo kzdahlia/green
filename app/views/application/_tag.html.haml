@@ -1,0 +1,4 @@
+.tag
+  %button.btn.btn-inverse{:data => { :toggle => :button, :type => :tag_checkbox }, :onclick => "return false;" }
+    = tag.name
+  %input{ :type => :checkbox, :name => "tags[tag_ids][]", :value => tag.id }

@@ -8,7 +8,20 @@
 @import "tag";
 @import "btn";
 @import "pull";
+@import "foot";
+
+body {
+  padding-left: 20px;
+  padding-right: 20px;
+}
 
 .top_fix {
   padding-top: 60px;
+}
+
+.input-append {
+  margin: 0 12px;
+  .btn {
+    margin-left: -5px;
+  }
 }

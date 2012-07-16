@@ -1,34 +1,56 @@
-.input-append {
-  margin: 0 12px;
-  .btn {
-    margin-left: -5px;
-  }
-}
-
 .list {
   .foto_cell {
     z-index: -10;
     float: left;
     margin: 0 4px 4px 0;
+    label {
+      margin-bottom: 0;
+    }
+    .img {
+      width: 105px;
+      height: 105px;
+      overflow: hidden;
+    }
+//    input[type=checkbox] {
+//      visibility: hidden;
+//    }
+    .checked {
+      display: none;
+    }
     .icons {
+        position: absolute;
       .tagged {
         position: relative;
         z-index: 1;
         left: 90px;
-        top: -109px;
+        top: -108px;
       }
       .zoomin {
         position: relative;
         z-index: 1;
-        left: -13px;
-        top: -101px;
+        width: 17px;
+        left: 4px;
+        top: -118px;
+        background: white;
+        opacity: 0.8;
+        @include border-radius(10px);
+        box-shadow: 2px 4px 3px rgba(20%,20%,40%,0.5);
       }
-      .add {
+      .foto_checked {
+        visibility: hidden;
         position: relative;
-        z-index: 1;
-        left: 52px;
-        top: -20px;
+        left: 74px;
+        top: -30px;
       }
+    }
+  }
+  .foto_cell.selected {
+    .checked {
+      display: block;
+      position: relative;
+      z-index: 9999;
+      left: 74px;
+      top: -45px;
     }
   }
 }

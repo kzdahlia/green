@@ -1,5 +1,10 @@
 - content_for :topbar do
   = render :partial => "foto_top"
 - content_for :subbar do
-  = render :partial => "foto_sub"
+  = render :partial => "subbar"
 
+.pull-center
+  %img{ :src => @foto.url, :width => "100%" }/
+  
+= yield :fotos_remove_modal
+= yield :fotos_tagging_modal

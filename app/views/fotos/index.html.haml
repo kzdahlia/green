@@ -6,14 +6,17 @@
 %ul.nav.nav-pills.nav-stacked
   %li.active
     = link_to "全部相片" , "#"
-  - ["尚未分類 (34)", "美食 (70)", "出遊 (152)", "毛小孩 (579)"].each do |tag|
+  - current_user.tags.each do |tag|
     %li
-      = link_to tag, "#"
+      = link_to "#{tag.name} (#{tag.tagging_count})", "#"
   %li
-    %form.form-inline.input-append
-      %input#appendedInputButton{:placeholder => "輸入新分類名稱",:size => "16", :type => "text"}
-        %button.btn{:type => "button"} 新增
+    = simple_form_for Tag.new, :url => user_tags_path(current_user), :html => { :class => "form-inline input-append", :id => "fotos_form" }, :method => :post do |tag_form|
+      = tag_form.input_field :name, :id => "appendedInputButton", :placeholder => "輸入新分類名稱", :size => 16
+      = tag_form.submit " 新增", :class => :btn
 .list
-  - 6.times do |i|
-    = render :partial => "foto_cell"
-  .clearfix
+  = simple_form_for current_user, :url => collection_user_fotos_path(current_user) do |f|
+    = f.simple_fields_for :fotos, @fotos do |foto_form|
+      = render :partial => "foto_cell", :object => foto_form.object, :as => :foto, :locals => { :form => foto_form }
+    .clearfix
+    = yield :fotos_remove_modal
+    = yield :fotos_tagging_modal

@@ -36,7 +36,7 @@ class FotosController < ApplicationController
   
   def append_tags(foto_ids)
     current_user.fotos.where(:id => @foto_ids).each do |foto|
-      params[:tags][:tag_ids].each{ |tag_id| foto.tag_ids << tag_id }
+      foto.update_attributes :tag_ids => (params[:tags][:tag_ids].map(&:to_i) + foto.tag_ids).uniq
     end
   end
   

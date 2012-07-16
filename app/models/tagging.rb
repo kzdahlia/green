@@ -1,5 +1,4 @@
 class Tagging < ActiveRecord::Base
-  validates_uniqueness_of :name, :scope => [:user_id], :case_sensitive => false
   validates_presence_of :tag_id
   validates_presence_of :foto_id
   validates_presence_of :user_id
@@ -7,7 +6,7 @@ class Tagging < ActiveRecord::Base
   belongs_to :user
   belongs_to :tag, :counter_cache => :tagging_count
   
-  before_save :sync_user_id
+  before_validation :sync_user_id
   
   private
   

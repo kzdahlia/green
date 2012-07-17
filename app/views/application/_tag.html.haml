@@ -1,4 +1,6 @@
+- tag_ids = local_assigns[:foto] ? foto.tag_ids : []
+- checked = tag_ids.include?(tag.id)
 .tag
-  %button.btn.btn-inverse{:data => { :toggle => :button, :type => :tag_checkbox }, :onclick => "return false;" }
+  %button.btn.btn-inverse{:data => { :toggle => :button, :type => :tag_checkbox }, :onclick => "return false;", :class => (checked ? "active" : "") }
     = tag.name
-  %input{ :type => :checkbox, :name => "tags[tag_ids][]", :value => tag.id }
+  %input{ :type => :checkbox, :name => "foto[tag_ids][]", :value => tag.id, :checked => checked }

@@ -34,7 +34,7 @@
       %p
         .tags
           - current_user.tags.each do |tag|
-            = render :partial => "tag", :object => tag
+            = render :partial => "tag", :object => tag, :locals => { :foto => @foto }
         .clearfix
         %form.form-inline.input-append
           %input#tag_add{ :placeholder => "輸入新分類名稱", :size => "16", :type => "text" }

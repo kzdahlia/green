@@ -16,7 +16,7 @@ class FotosController < ApplicationController
   def update
     @foto = current_user.fotos.find params[:id]
     if @foto.update_attributes params[:foto]
-      redirect_to user_fotos_path(current_user)
+      redirect_to request.env["HTTP_REFERER"] || user_fotos_path(current_user)
     end
   end
   
@@ -28,7 +28,7 @@ class FotosController < ApplicationController
   end
   
   def update_collection
-    append_tags(@foto_ids) if params[:tags] && (params[:tags][:tag_ids] || []).size > 0
+    append_tags(@foto_ids) if params[:foto] && (params[:foto][:tag_ids] || []).size > 0
     redirect_to user_fotos_path(current_user)
   end
   

@@ -44,7 +44,7 @@ module Parser::Dropbox
       content.scan(/<a href="([^"]+)" target="_top".*?><img data\-src="([^"]+)"/m).each do |tmps|
         dropbox_url = tmps[0]
         foto_token = "dropbox:#{self.dropbox_id}:#{dropbox_url.split("/").last.gsub("%20", " ")}"
-        next if Foto.find_by_token(foto_token) || url.index(".mov")
+        next if Foto.find_by_token(foto_token) || dropbox_url.index(".mov")
         foto_url = convert_dropbox_url(dropbox_url)
         foto = fotos.create! :url => foto_url, :token => foto_token, :data => { :dropbox_url => dropbox_url }, :datetime => parse_dropbox_foto_datetime(foto_url), :is_enabled => true
       end

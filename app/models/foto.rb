@@ -33,7 +33,7 @@ class Foto < ActiveRecord::Base
     generate_thumb
     fetch_exif
     # fetch_origin_url
-    update_column :fetch_state, :finished
+    update_column :fetch_state, (fetched? ? :finished : nil)
   end
   
   def next
@@ -58,6 +58,10 @@ class Foto < ActiveRecord::Base
   
   private 
   
+  def fetched?
+    has_thumb? && datetime && width && height
+  end
+
   def fetch_exif
     return unless file.file.path
     rmagick = Magick::Image.read(file.file.path).first

@@ -18,4 +18,22 @@ module ApplicationHelper
     classes.join(" ")
   end
   
+  def current_list_name
+    if params[:tag_id] && @tag
+      return @tag.name
+    elsif params[:untagging]
+      return untagging_fotos_name
+    else
+      return all_fotos_name
+    end
+  end
+ 
+  def all_fotos_name
+    "全部相片"
+  end
+  
+  def untagging_fotos_name
+    "尚未分類"
+  end
+  
 end

@@ -34,7 +34,15 @@ $(document).ready(function(){
     });
   });
   
-
+  $('[data-type=toggle]').each(function(){
+    var to = $($(this).attr('data-to'));
+    to.each(function(){ $(this).hide(); });
+    $(this).on("click", function(){
+      to.each(function(){ $(this).toggle(); });
+      return false;
+    });
+  });
+  
   $('input[data-type=append_tag]').each(function(){
     var user_id = $(this).attr('data-user_id');
     var to = $($(this).attr('data-to'))

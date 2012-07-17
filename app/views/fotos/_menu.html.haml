@@ -1,0 +1,17 @@
+%ul.nav.nav-pills.nav-stacked
+  %li.active
+    = link_to current_list_name , "#", :data => { :type => :toggle, :to => "li.tags-tag" }
+  - if current_list_name != all_fotos_name
+    %li.tags-tag
+      = link_to all_fotos_name, user_fotos_path(current_user)
+  - if current_list_name != untagging_fotos_name
+    %li.tags-tag
+      = link_to untagging_fotos_name, user_fotos_path(current_user, :untagging => true)
+  - current_user.tags.each do |tag|
+    - next if tag.id.to_s == params[:tag_id]
+    %li.tags-tag
+      = link_to "#{tag.name} (#{tag.tagging_count})", user_fotos_path(current_user, :tag_id => tag.id)
+  %li
+    = simple_form_for Tag.new, :url => user_tags_path(current_user), :html => { :class => "form-inline input-append", :id => "fotos_form" }, :method => :post do |tag_form|
+      = tag_form.input_field :name, :id => "appendedInputButton", :placeholder => "輸入新分類名稱", :size => 16
+      = tag_form.submit " 新增", :class => :btn

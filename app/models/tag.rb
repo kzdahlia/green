@@ -3,5 +3,6 @@ class Tag < ActiveRecord::Base
   validates_presence_of :name
   validates_presence_of :user_id
   has_many :taggings, :dependent => :destroy
+  has_many :fotos, :through => :taggings
   belongs_to :user
 end

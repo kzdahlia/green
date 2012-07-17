@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120710083354) do
+ActiveRecord::Schema.define(:version => 20120717100824) do
 
   create_table "fotos", :force => true do |t|
     t.integer  "user_id"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20120710083354) do
     t.integer  "width"
     t.integer  "height"
     t.string   "file"
+    t.integer  "taggings_count", :default => 0
     t.string   "fetch_state"
     t.string   "url_thumb"
     t.boolean  "is_enabled"

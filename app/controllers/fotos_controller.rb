@@ -3,6 +3,12 @@ class FotosController < ApplicationController
   
   def index
     @fotos = current_user.fotos.enabled.page(params[:page]).per(30)
+    if params[:tag_id]
+      @tag = Tag.find(params[:tag_id])
+      @fotos = @fotos.where(:id => @tag.fotos.map(&:id)) 
+    elsif params[:untagging]
+      @fotos = @fotos.where(:taggings_count => 0) 
+    end
   end
   
   def show
@@ -42,7 +48,7 @@ class FotosController < ApplicationController
   
   def append_tags(foto_ids)
     current_user.fotos.where(:id => @foto_ids).each do |foto|
-      foto.update_attributes :tag_ids => (params[:tags][:tag_ids].map(&:to_i) + foto.tag_ids).uniq
+      foto.update_attributes :tag_ids => (params[:foto][:tag_ids].map(&:to_i) + foto.tag_ids).uniq
     end
   end
   

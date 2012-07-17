@@ -2,17 +2,9 @@
   = render :partial => "topbar"
 - content_for :subbar do
   = render :partial => "subbar"
+
+= render :partial => "menu"
   
-%ul.nav.nav-pills.nav-stacked
-  %li.active
-    = link_to "全部相片" , "#"
-  - current_user.tags.each do |tag|
-    %li
-      = link_to "#{tag.name} (#{tag.tagging_count})", "#"
-  %li
-    = simple_form_for Tag.new, :url => user_tags_path(current_user), :html => { :class => "form-inline input-append", :id => "fotos_form" }, :method => :post do |tag_form|
-      = tag_form.input_field :name, :id => "appendedInputButton", :placeholder => "輸入新分類名稱", :size => 16
-      = tag_form.submit " 新增", :class => :btn
 .list
   = simple_form_for current_user, :url => collection_user_fotos_path(current_user) do |f|
     = f.simple_fields_for :fotos, @fotos do |foto_form|

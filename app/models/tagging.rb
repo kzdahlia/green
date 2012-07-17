@@ -2,7 +2,7 @@ class Tagging < ActiveRecord::Base
   validates_presence_of :tag_id
   validates_presence_of :foto_id
   validates_presence_of :user_id
-  belongs_to :foto
+  belongs_to :foto, :counter_cache => :taggings_count
   belongs_to :user
   belongs_to :tag, :counter_cache => :tagging_count
   

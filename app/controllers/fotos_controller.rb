@@ -1,4 +1,5 @@
 class FotosController < ApplicationController
+  before_filter :authenticate_user!
   before_filter :load_foto_ids, :only => [ :destroy_collection, :update_collection ]
   
   def index

@@ -79,7 +79,7 @@ class Foto < ActiveRecord::Base
     return unless url.present?
     begin
       self.remote_file_url = url
-      update_attributes :fetch_state => "thumbnail", :url_thumb => file.thumb.url if self.save
+      update_column(:url_thumb, file.thumb.url) if self.save
     rescue OpenURI::HTTPError
       self.disable
     end

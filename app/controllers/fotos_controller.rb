@@ -32,6 +32,12 @@ class FotosController < ApplicationController
     redirect_to user_fotos_path(current_user)
   end
   
+  def destroy
+    @foto = current_user.fotos.find params[:id]
+    @foto.disable
+    redirect_to(@foto.prev ? user_foto_path(current_user, @foto.prev) : user_fotos_path(current_user))
+  end
+  
   private 
   
   def append_tags(foto_ids)

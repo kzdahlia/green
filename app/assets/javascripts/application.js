@@ -10,7 +10,7 @@ $(document).ready(function(){
       if(bt.attr('data-action')) {
         form.attr('action', bt.attr('data-action'));
       }
-      if(check_checked_count()) {
+      if(check_checked_count() || form.attr("force_submit")) {
         form.submit();
       } else {
         alert("請選擇至少一張圖片");
@@ -44,6 +44,7 @@ $(document).ready(function(){
       text_input.attr("value", "");
       $.post("/users/"+user_id+"/tags.html", { "tag": { "name": tag_name } }, function(data){
         to.append(data);
+        init_tag_checkbox(null)
       });
     });
   });
@@ -63,19 +64,7 @@ $(document).ready(function(){
       }
     });
   });
-
-  $('button[data-type=tag_checkbox]').each(function(){
-    var checkbox = $("input[type=checkbox]", $(this).parents('.tag'));
-    checkbox.hide();
-    $(this).on("click", function(){
-      if(this.className.indexOf('active') >= 0) { // uncheck
-        checkbox.attr('checked', false);
-      } else { // check
-        checkbox.attr('checked', true);
-      }
-    });
-  });
-
+  init_tag_checkbox(null)
   $('.tags').button();
 });
 
@@ -87,6 +76,22 @@ function check_checked_count() {
   }
 }
 
+function init_tag_checkbox(parent_dom) {
+  if(!parent_dom) {
+    parent_dom = document;
+  }
+  $('button[data-type=tag_checkbox]', parent_dom).each(function(){
+    var checkbox = $("input[type=checkbox]", $(this).parents('.tag'));
+    checkbox.hide();
+    $(this).on("click", function(){
+      if(this.className.indexOf('active') >= 0) { // uncheck
+        checkbox.attr('checked', false);
+      } else { // check
+        checkbox.attr('checked', true);
+      }
+    });
+  });
+}
 
 function check_counter_append(to, num) {
   var number = parseInt(to.html())

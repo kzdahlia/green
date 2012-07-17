@@ -5,6 +5,7 @@
 
 .pull-center
   %img{ :src => @foto.url, :width => "100%" }/
-  
-= yield :fotos_remove_modal
-= yield :fotos_tagging_modal
+
+= simple_form_for @foto, :url => user_foto_path(current_user, @foto), :html => { :force_submit => true } do |form|
+  = yield :fotos_remove_modal
+  = yield :fotos_tagging_modal

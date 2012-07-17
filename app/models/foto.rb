@@ -36,6 +36,26 @@ class Foto < ActiveRecord::Base
     update_column :fetch_state, :finished
   end
   
+  def next
+    if !@next_foto
+      ids = user.fotos.enabled.map(&:id)
+      index = ids.index(id) || 0
+      index = index - 1 if index > 0
+      @next_foto = Foto.find(ids[index])
+    end
+    @next_foto
+  end
+  
+  def prev
+    if !@prev_foto
+      ids = user.fotos.enabled.map(&:id).reverse
+      index = ids.index(id) || 0
+      index = index - 1 if index > 0
+      @prev_foto = Foto.find(ids[index])
+    end
+    @prev_foto
+  end
+  
   private 
   
   def fetch_exif

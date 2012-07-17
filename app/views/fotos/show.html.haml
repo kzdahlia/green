@@ -3,8 +3,12 @@
 - content_for :subbar do
   = render :partial => "subbar"
 
-.pull-center
+.pull-center{ :data => { :type => :mover, :show => ".buttons" } }
   %img{ :src => @foto.url, :width => "100%" }/
+.buttons.next{ :data => { :type => :fixed, :right => 30, :top => :middle } }
+  = link_to "NEXT", user_foto_path(current_user, @foto.next)
+.buttons.prev{ :data => { :type => :fixed, :left => 30, :top => :middle } }
+  = link_to "PREV", user_foto_path(current_user, @foto.prev)
 
 = simple_form_for @foto, :url => user_foto_path(current_user, @foto), :html => { :force_submit => true } do |form|
   = yield :fotos_remove_modal

@@ -74,6 +74,37 @@ $(document).ready(function(){
   });
   init_tag_checkbox(null)
   $('.tags').button();
+  
+  $("[data-type=mover]").each(function(){
+    var show = $($(this).attr("data-show"))
+    $(this).on("mouseover", function() {
+      show.each(function(){
+        var dom = this;
+        if($(this).attr('data-type') == 'fixed') {
+          $(this).css('position', 'absolute');
+          var top = $(this).attr('data-top');
+          if($(this).attr('data-top') == 'middle') {
+            top = $(window).scrollTop() + ($(window).innerHeight() / 2);
+            var dom = this;
+            $(window).scroll(function() {
+              top = $(window).scrollTop() + ($(window).innerHeight() / 2);
+              $(dom).css('top', top+"px");
+            });
+          }
+          $(this).css('top', top+"px");
+          $(this).css('left', $(this).attr('data-left')+"px");
+          $(this).css('right', $(this).attr('data-right')+"px");
+          $(this).on("mouseover", function(){
+            $(this).show();
+          });
+        }
+      });
+      show.show();
+    });
+    $(this).on("mouseout", function() {
+      show.hide();
+    });
+  });
 });
 
 function check_checked_count() {

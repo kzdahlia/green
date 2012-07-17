@@ -3,11 +3,8 @@
     .pull-left
       = link_to "上一頁", user_fotos_path(current_user), :class => "btn-back"
     .pull-center
-      %span
-        美食
-      %span
-        15
-      ╱
-      %span
-        70
+      - if @foto.datetime
+        %span
+          = "拍照時間:"
+          = @foto.datetime
     .clearfix

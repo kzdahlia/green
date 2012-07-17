@@ -1,12 +1,11 @@
 .foto_cell
-  %label{ :for => "foto-#{foto.id}" }
-    .img{ :data => foto.has_thumb? ? "" : { :type => :foto } }
+  .img{ :data => { :type => :foto } }
+    %label{ :for => "foto_#{foto.id}" }
       = image_tag foto_file_path(foto), :class => :foto
-      .checked
-        %img{:src => asset_path('checked.png')}
-    .icons
-      = form.input_field :_id, :as => :boolean, :checked => false, :class => 'icon-ok-sign add foto_checked', :data => { :type => :fade, :to => ".foto_cell"}, :id => "foto-#{foto.id}"
+    .checked
+      %img{:src => asset_path('checked.png')}
   .icons
+    = form.input_field :_id, :as => :boolean, :checked => false, :class => 'icon-ok-sign add foto_checked', :data => { :type => :fade, :to => ".foto_cell"}, :id => "foto_#{foto.id}"
     = link_to "#", :class => 'tagged' do
       %i.icon-bookmark
     = link_to user_foto_path(foto.user, foto) do

@@ -32,7 +32,7 @@ class Foto < ActiveRecord::Base
   def fetch
     generate_thumb
     fetch_exif
-    fetch_origin_url
+    # fetch_origin_url
     update_column :fetch_state, :finished
   end
   
@@ -63,8 +63,8 @@ class Foto < ActiveRecord::Base
     rmagick = Magick::Image.read(file.file.path).first
     datetime = rmagick.get_exif_by_entry('DateTimeOriginal').first.last
     update_attributes :width => rmagick.get_exif_by_entry('ExifImageWidth').first.last,
-                      :height => rmagick.get_exif_by_entry('ExifImageLength').first.last
-    # :datetime => datetime.gsub(datetime[0..9], datetime[0..9].gsub(":", "-")), 
+                      :height => rmagick.get_exif_by_entry('ExifImageLength').first.last,
+                      :datetime => datetime.gsub(datetime[0..9], datetime[0..9].gsub(":", "-"))
   end
   
   def fetch_origin_url

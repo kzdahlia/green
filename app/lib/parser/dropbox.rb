@@ -42,19 +42,20 @@ module Parser::Dropbox
         content = fetch(res["location"])
       end
       content.scan(/<a href="([^"]+)" target="_top".*?><img data\-src="([^"]+)"/m).each do |tmps|
-        url = tmps[1]
-        foto_token = "dropbox:#{self.dropbox_id}:#{url.split("/").last.gsub("%20", " ")}"
-        next if Foto.find_by_url(url) || url.index(".mov")
-        foto_url = convert_dropbox_url(url)
-        foto = fotos.create :url => foto_url, :token => foto_token, :data => { :dropbox_url => tmps[0] }, :datetime => parse_dropbox_foto_datetime(foto_url), :is_enabled => true
+        dropbox_url = tmps[0]
+        foto_token = "dropbox:#{self.dropbox_id}:#{dropbox_url.split("/").last.gsub("%20", " ")}"
+        next if Foto.find_by_token(foto_token) || url.index(".mov")
+        foto_url = convert_dropbox_url(dropbox_url)
+        foto = fotos.create! :url => foto_url, :token => foto_token, :data => { :dropbox_url => dropbox_url }, :datetime => parse_dropbox_foto_datetime(foto_url), :is_enabled => true
       end
     end
 
     private
 
     def convert_dropbox_url(url)
+      url.gsub("www.dropbox.com", "dl.dropbox.com")
       # dropbox_client.media("/Camera Uploads/#{url.split("/").last.gsub("%20", " ")}")['url']
-      url.gsub(/photos\-[0-9]+\.dropbox\.com/, 'photos-1.dropbox.com').gsub(/\/si\/[^\/]+\//, "/si/xl/")
+      # url.gsub(/photos\-[0-9]+\.dropbox\.com/, 'photos-1.dropbox.com').gsub(/\/si\/[^\/]+\//, "/si/xl/")
     end
 
     def parse_dropbox_foto_datetime(url)
